@@ -1,7 +1,8 @@
-import { MovieItem } from "../lib/definition";
+import { FC } from 'react';
+import { MovieCardProps } from '../lib/interfaces';
 
 
-const MovieCard = ({ title, overview, genre_ids, vote_average, backdrop_path }: MovieItem) => {
+const MovieCard: FC<MovieCardProps> = ({ title, overview, genre_ids, vote_average, backdrop_path }) => {
 
   const imageUrl = `https://image.tmdb.org/t/p/w370_and_h556_multi_faces${backdrop_path}`;
 
@@ -21,7 +22,7 @@ const MovieCard = ({ title, overview, genre_ids, vote_average, backdrop_path }: 
         <h2 className="mb-6 block font-sans text-4xl font-medium leading-[1.5] tracking-normal text-white antialiased ">
           {title}
         </h2>
-        <h4 className="block text-white mb-4 font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-gray-400">
+        <h4 className="block text-white mb-4 font-sans text-xl antialiased font-semibold leading-snug tracking-normal">
           {genre_ids}
         </h4>
         <h5 className="text-white font-bold line-clamp-2">IMDB: {vote_average}</h5>
