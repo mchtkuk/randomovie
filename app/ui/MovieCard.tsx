@@ -18,16 +18,16 @@ const MovieCard: FC<MovieCardProps> = ({ title, overview, genre_ids, vote_averag
       >
         <div className="absolute inset-0 w-full h-full to-bg-black-10 bg-gradient-to-t from-black/80 via-black/50 backdrop-blur-[1px]"></div>
       </div>
-      <div className="relative p-6 px-6 py-14 md:px-12">
-        <h2 className="mb-6 block font-sans text-4xl font-medium leading-[1.5] tracking-normal text-white antialiased ">
+      <div className="relative max-h-10 p-6 px-6 py-14 md:px-12">
+        <h2 className="mb-2 block font-sans text-3xl font-medium leading-[1.5] tracking-normal text-white antialiased ">
           {title}
         </h2>
         <h4 className="block text-white mb-4 font-sans text-xl antialiased font-semibold leading-snug tracking-normal">
           {genre_ids}
         </h4>
         <h5 className="text-white font-bold line-clamp-2">IMDB: {vote_average}</h5>
-        <div className= "overflow-scroll min-h-full mt-1">
-          <p style={{overflow: "scroll", height: "15rem"}} className="text-white">{overview}</p>
+        <div className= "min-h-full mt-1">
+          <p style={{ overflow: "auto",height: "15rem"}} className="text-white">{overview}</p>
         </div>
       </div>
     </div>
