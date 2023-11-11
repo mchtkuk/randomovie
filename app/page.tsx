@@ -23,12 +23,12 @@ export default function Home() {
   const genreNames = mapGenreIdsToNames(genre_ids);
 
   return (
-    <main className="flex min-h-screen flex-col items-center gap-5 backdrop-blur-sm">
-      <header className="flex p-8 w-1/2 justify-center items-center">
+    <main className="flex min-h-screen flex-col gap-5 backdrop-grayscale-[50%] backdrop-blur-sm">
+      <header className="flex p-8 justify-between border-b-[2px] border-gray-500">
         <button>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="w-8 h-8"
+            className="w-8 h-8 hover:text-[#6ADBE9]"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -41,34 +41,22 @@ export default function Home() {
             />
           </svg>
         </button>
-        <h1 className="font-bold text-4xl text-center flex-1">RandoMovie</h1>
-        <button className="bg-white hover:bg-blue-100 text-black font-bold py-2 px-4 rounded">
+        <button  onClick={handleGenerateMovie} className="font-bold text-4xl hover:text-[#6ADBE9] text-center">RandoMovie</button>
+        <button className="text-white font-bold hover:text-[#6ADBE9]">
           Sign in
         </button>
       </header>
-      <section className="flex flex-col gap-5 mt-10 items-center">
-        <div className="flex flex-col text-center gap-2 justify-center">
-          <h2 className="font-bold text-3xl">Cant decide to choose a movie,</h2>
-          <h3 className="font-bold text-2xl">
-            Press the button and generate a random movie ticket.
-          </h3>
-        </div>
-        <button
-          onClick={handleGenerateMovie}
-          className="bg-white hover:bg-blue-100 text-black font-bold py-2 px-4 w-1/2 rounded"
-        >
-          Generate Movie
-        </button>
-      </section>
-      <section>
+      <section className="w-full px-36 flex justify-center items-center">
         {randomMovie && (
           <MovieCard
             title={randomMovie.title}
             overview={randomMovie.overview}
-            genre_ids={genreNames.join(", ")}
+            genre_ids={genreNames.join(" ")}
             vote_average={randomMovie.vote_average}
             backdrop_path={randomMovie.backdrop_path}
-
+            release_date={randomMovie.release_date}
+            original_language= {randomMovie.original_language}
+            popularity = {randomMovie.popularity}
           />
         )}
       </section>
