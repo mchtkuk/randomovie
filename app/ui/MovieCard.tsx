@@ -43,7 +43,7 @@ const MovieCard: FC<MovieCardProps> = ({
             <h1 className=" font-bold text-2xl text-[#6ADBE9]">Storyline</h1>
           </div>
           <p className="text-white">{overview}</p>
-          <p className="text-gray-400">Popularity: {popularity}%</p>
+          <p className="text-gray-400">Popularity: {popularity.toFixed(0)}%</p>
           <p className="text-gray-400">Original Language: {original_language.toUpperCase()}</p>
         </div>
       </div>
