@@ -26,19 +26,22 @@ const MovieCard: FC<MovieCardProps> = ({
         ></div>
       </div>
       <div className="relative w-3/4 px-6 gap-5 flex flex-col md:px-12">
-        <h2 className="mb-2 block font-sans text-3xl font-medium leading-[1.5] tracking-normal text-white antialiased ">
+        <h1 className="mb-2 font-bold text-6xl text-white antialiased ">
           {title}
-        </h2>
-        <h3 className="text-2xl text-white">Release Date: {release_date.split('-').reverse().join('-')}</h3>
-        <div className="flex gap-3 text-white mb-4 font-sans text-xl antialiased font-semibold leading-snug tracking-normal button">
+        </h1>
+        <h3 className="text-2xl font-bold text-white">Release Date: {release_date.split('-').reverse().join('-')}</h3>
+        <div className="flex gap-3 text-white mb-4 font-bold text-xl antialiased  leading-snug tracking-normal button">
           {genre_ids.split(" ").map(genres => (
-            <h5 className="border bg-transparent text-white p-2 pointer-events-none" key={genres}>{genres}</h5>
+            <h5 className="border bg-transparent text-white font-bold p-2 pointer-events-none" key={genres}>{genres}</h5>
           ))}
         </div>
-        <h5 className="text-white font-bold line-clamp-2">
+        <h5 className="text-white font-bold text-3xl">
           IMDB: {vote_average}
         </h5>
-        <div className="mt-1 gap-4 flex flex-col">
+        <div className="gap-4 flex flex-col">
+          <div className="border-b-2 border-spacing-5 w-fit py-2 border-[#6ADBE9]">
+            <h1 className=" font-bold text-2xl text-[#6ADBE9]">Storyline</h1>
+          </div>
           <p className="text-white">{overview}</p>
           <p className="text-gray-400">Popularity: {popularity}%</p>
           <p className="text-gray-400">Original Language: {original_language.toUpperCase()}</p>
