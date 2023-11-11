@@ -8,7 +8,7 @@ async function getRandomMovie(): Promise<MovieItem> {
 
     const options = {
       method: "GET",
-      url: "https://api.themoviedb.org/3/discover/movie",
+      url: "https://api.themoviedb.org/4/discover/movie",
       params: {
         include_adult: "false",
         include_video: "false",
