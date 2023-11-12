@@ -9,15 +9,16 @@ const MovieCard: FC<MovieCardProps> = ({
   backdrop_path,
   release_date,
   popularity,
-  original_language
+  original_language,
+  onClick
 }) => {
   const imageUrl = `https://image.tmdb.org/t/p/w370_and_h556_multi_faces${backdrop_path}`;
 
   return (
-    <div className="flex flex-row overflow-hidden first-line:bg-clip-border mt-32  text-gray-700">
-      <div className="flex w-1/4 border-gray-800 border-[12px]">
+    <div className="block md:flex max-w-[1240px] p-3 flex-row overflow-hidden mb-10 first-line:bg-clip-border  text-gray-700">
+      <div className="flex w-full md:w-2/4 max-w-screen-sm border-gray-800 border-[12px]">
         <div
-          className="inset-0 m-0 min-h-[600px] w-full bg-transparent bg-[url('https://image.tmdb.org/t/p/w370_and_h556_multi_faces/tM7uHa2Km5gSakooTQsZLwit3PK.jpg')] bg-cover bg-clip-border bg-center text-gray-700 shadow-none"
+          className="min-h-[600px] w-full bg-transparent bg-[url('https://image.tmdb.org/t/p/w370_and_h556_multi_faces/tM7uHa2Km5gSakooTQsZLwit3PK.jpg')] bg-cover text-gray-700 shadow-none"
           style={{
             backgroundImage: `url(${imageUrl})`,
             backgroundSize: "cover",
@@ -25,12 +26,12 @@ const MovieCard: FC<MovieCardProps> = ({
           }}
         ></div>
       </div>
-      <div className="relative w-3/4 px-6 gap-5 flex flex-col md:px-12">
+      <div className="relative w-full md:w-2/4 mt-5 md:mt-0 gap-5 flex flex-col md:px-12">
         <h1 className="mb-2 font-bold text-6xl text-white antialiased ">
           {title}
         </h1>
         <h3 className="text-2xl font-bold text-white">Release Date: {release_date.split('-').reverse().join('-')}</h3>
-        <div className="flex gap-3 text-white mb-4 font-bold text-xl antialiased  leading-snug tracking-normal button">
+        <div className="flex gap-3 text-white mb-4 flex-wrap font-bold text-xl antialiased  leading-snug tracking-normal button">
           {genre_ids.split(" ").map(genres => (
             <h5 className="border bg-transparent text-white font-bold p-2 pointer-events-none" key={genres}>{genres}</h5>
           ))}
@@ -45,6 +46,7 @@ const MovieCard: FC<MovieCardProps> = ({
           <p className="text-white">{overview}</p>
           <p className="text-gray-400">Popularity: {popularity.toFixed(0)}%</p>
           <p className="text-gray-400">Original Language: {original_language.toUpperCase()}</p>
+          <button className="text-white hover:text-[#6ADBE9] font-bold flex" onClick={onClick}>Randomize</button>
         </div>
       </div>
     </div>

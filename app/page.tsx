@@ -24,7 +24,7 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col gap-5 backdrop-grayscale-[50%] backdrop-blur-sm">
-      <header className="flex p-8 justify-between border-b-[2px] border-gray-500">
+      <header className="flex relative p-8 justify-between w-full border-b-[2px] border-gray-500">
         <button>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -46,7 +46,7 @@ export default function Home() {
           Sign in
         </button>
       </header>
-      <section className="w-full px-36 flex justify-center items-center">
+      <section className="w-full relative flex justify-center items-center">
         {randomMovie && (
           <MovieCard
             title={randomMovie.title}
@@ -57,6 +57,7 @@ export default function Home() {
             release_date={randomMovie.release_date}
             original_language= {randomMovie.original_language}
             popularity = {randomMovie.popularity}
+            onClick= {handleGenerateMovie}
           />
         )}
       </section>

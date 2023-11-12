@@ -13,6 +13,7 @@ export type MovieItem = {
   video: boolean
   vote_average: number
   vote_count: number
+  onClick: () => void
 }
 
 export type DiscoverMoviesPayload = {

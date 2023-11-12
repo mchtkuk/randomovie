@@ -7,4 +7,5 @@ export interface MovieCardProps {
   release_date: string;
   original_language: string;
   popularity: number;
+  onClick: () => void
 }
