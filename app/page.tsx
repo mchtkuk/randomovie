@@ -1,19 +1,32 @@
 "use client";
 
-import getRandomMovie from "./lib/data";
-import { useState } from "react";
+import { getRandomMovie, getFeaturedMovie } from "./lib/data";
+import { useEffect, useState } from "react";
 import { GenreIds, MovieItem, genresById } from "./lib/definition";
 import MovieCard from "./ui/MovieCard";
+import Featured from "./ui/Featured";
 
 export default function Home() {
   const [randomMovie, setRandomMovie] = useState<MovieItem>();
+  const [featuredMovie, setFeaturedMovie] = useState<MovieItem>();
 
   const handleGenerateMovie = () => {
     getRandomMovie().then((movie) => {
-      console.log(movie);
       setRandomMovie(movie);
     });
   };
+
+  const featuredGenerateMovie = () => {
+    getFeaturedMovie().then((featured) => {
+      console.log(featured);
+      setFeaturedMovie(featured);
+    });
+  };
+
+  useEffect(() => {
+    handleGenerateMovie();
+    featuredGenerateMovie();
+  }, []);
 
   const mapGenreIdsToNames = (genreIds: GenreIds[]): string[] => {
     return genreIds.map((id) => genresById[id]);
@@ -41,7 +54,12 @@ export default function Home() {
             />
           </svg>
         </button>
-        <button  onClick={handleGenerateMovie} className="font-bold text-4xl hover:text-[#6ADBE9] text-center">RandoMovie</button>
+        <button
+          onClick={handleGenerateMovie}
+          className="font-bold text-4xl hover:text-[#6ADBE9] text-center"
+        >
+          RandoMovie
+        </button>
         <button className="text-white font-bold hover:text-[#6ADBE9]">
           Sign in
         </button>
@@ -55,11 +73,22 @@ export default function Home() {
             vote_average={randomMovie.vote_average}
             backdrop_path={randomMovie.backdrop_path}
             release_date={randomMovie.release_date}
-            original_language= {randomMovie.original_language}
-            popularity = {randomMovie.popularity}
-            onClick= {handleGenerateMovie}
+            original_language={randomMovie.original_language}
+            popularity={randomMovie.popularity}
+            onClick={handleGenerateMovie}
           />
         )}
+      </section>
+      <section>
+        {featuredMovie && featuredMovie.map((featured) => (
+          <Featured
+            key={featured.id}
+            title={featured.title}
+            vote_average={featured.vote_average}
+            backdrop_path={featured.backdrop_path}
+          />
+        )) 
+        }
       </section>
     </main>
   );

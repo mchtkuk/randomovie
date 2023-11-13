@@ -9,3 +9,9 @@ export interface MovieCardProps {
   popularity: number;
   onClick: () => void
 }
+
+export interface FeaturedProps {
+  title: string;
+  vote_average: number;
+  backdrop_path: string;
+}

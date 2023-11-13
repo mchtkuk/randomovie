@@ -12,8 +12,8 @@ const MovieCard: FC<MovieCardProps> = ({
   original_language,
   onClick
 }) => {
+ 
   const imageUrl = `https://image.tmdb.org/t/p/w370_and_h556_multi_faces${backdrop_path}`;
-
   return (
     <div className="block md:flex max-w-[1240px] p-3 flex-row overflow-hidden mb-10 first-line:bg-clip-border  text-gray-700">
       <div className="flex w-full md:w-2/4 max-w-screen-sm border-gray-800 border-[12px]">
