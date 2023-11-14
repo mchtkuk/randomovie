@@ -79,7 +79,10 @@ export default function Home() {
           />
         )}
       </section>
-      <section>
+      <div className="text-center">
+          <h2 className="font-bold text-3xl">Featured Movies</h2>
+        </div>
+      <section className="flex flex-row mb-10 justify-center">
         {featuredMovie && featuredMovie.map((featured) => (
           <Featured
             key={featured.id}

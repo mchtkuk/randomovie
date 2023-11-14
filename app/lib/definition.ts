@@ -1,4 +1,5 @@
 export type MovieItem = {
+  map(arg0: (featured: any) => import("react").JSX.Element): import("react").ReactNode
   adult: boolean
   backdrop_path: string
   genre_ids: GenreIds[]

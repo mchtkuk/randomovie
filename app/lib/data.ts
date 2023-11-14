@@ -65,7 +65,7 @@ export async function getFeaturedMovie() {
       console.log(options)
     const response = await axios.request(options);
 
-    const featuredMovie = response.data.results;
+    const featuredMovie = response.data.results.slice(0,5);
 
     return featuredMovie;
   } catch (error) {
