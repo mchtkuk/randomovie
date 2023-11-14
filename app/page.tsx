@@ -24,7 +24,6 @@ export default function Home() {
 
   const featuredGenerateMovie = () => {
     getFeaturedMovie().then((featured) => {
-      console.log(featured);
       setFeaturedMovie(featured);
     });
   };
@@ -88,17 +87,6 @@ export default function Home() {
       <div className="text-center">
         <h2 className="font-bold text-3xl">Featured Movies</h2>
       </div>
-      {/* <section className="flex flex-row mb-10 justify-center">
-        {featuredMovie &&
-          featuredMovie.map((featured) => (
-            <Featured
-              key={featured.id}
-              title={featured.title}
-              vote_average={featured.vote_average}
-              backdrop_path={featured.backdrop_path}
-            />
-          ))}
-      </section> */}
       <section className="flex flex-row justify-center items-center mb-6 ">
         <Swiper
         slidesPerView={2}

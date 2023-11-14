@@ -27,8 +27,6 @@ export async function getRandomMovie(): Promise<MovieItem> {
         Authorization: `Bearer ${API_KEY}`,
       },
     };
-
-      console.log(options)
     const response = await axios.request(options);
 
     const randomMovieIndex = getRandomInt(0, response.data.results.length - 1);
@@ -61,8 +59,6 @@ export async function getFeaturedMovie() {
         Authorization: `Bearer ${API_KEY}`,
       },
     };
-
-      console.log(options)
     const response = await axios.request(options);
 
     const featuredMovie = response.data.results.slice(0,9);
