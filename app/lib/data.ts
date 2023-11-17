@@ -34,7 +34,7 @@ export async function getRandomMovie(): Promise<MovieItem> {
 
     return randomMovie;
   } catch (error) {
-    console.error(error);
+    console.error("hata", error);
 
     throw error;
   }
