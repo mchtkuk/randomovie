@@ -1,11 +1,9 @@
 import axios from "axios";
 import { MovieItem } from "./definition";
 
-
 function getRandomInt(min: number, max: number): number {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-
 
 export async function getRandomMovie(): Promise<MovieItem> {
   try {
@@ -61,7 +59,7 @@ export async function getFeaturedMovie() {
     };
     const response = await axios.request(options);
 
-    const featuredMovie = response.data.results.slice(0,9);
+    const featuredMovie = response.data.results.slice(0, 18);
 
     return featuredMovie;
   } catch (error) {
@@ -71,5 +69,31 @@ export async function getFeaturedMovie() {
   }
 }
 
+export async function getFeaturedTv() {
+  const API_KEY = process.env.NEXT_PUBLIC_REACT_APP_API_KEY;
+  try {
+    const options = {
+      method: "GET",
+      url: "https://api.themoviedb.org/3/trending/tv/day",
+      params: {
+        include_adult: "false",
+        include_video: "false",
+        language: "en-US",
+        page: 1,
+        sort_by: "popularity.desc",
+      },
+      headers: {
+        accept: "application/json",
+        Authorization: `Bearer ${API_KEY}`,
+      },
+    };
+    const response = await axios.request(options);
 
+    const featuredTv = response.data.results.slice(0, 18);
 
+    return featuredTv;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}

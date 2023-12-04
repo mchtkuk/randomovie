@@ -1,6 +1,6 @@
 "use client";
 
-import { getRandomMovie, getFeaturedMovie } from "./lib/data";
+import { getRandomMovie, getFeaturedMovie, getFeaturedTv } from "./lib/data";
 import { useEffect, useState, useRef } from "react";
 import { GenreIds, MovieItem, genresById } from "./lib/definition";
 import MovieCard from "./ui/MovieCard";
@@ -15,6 +15,7 @@ import 'swiper/css/pagination';
 export default function Home() {
   const [randomMovie, setRandomMovie] = useState<MovieItem>();
   const [featuredMovie, setFeaturedMovie] = useState<MovieItem>();
+  const [featuredTv, setFeaturedTv] = useState<MovieItem>();
 
   const handleGenerateMovie = () => {
     getRandomMovie().then((movie) => {
@@ -28,14 +29,23 @@ export default function Home() {
     });
   };
 
+  const featuredGenerateTv = () => {
+    getFeaturedTv().then((featured) => {
+      setFeaturedTv(featured)
+    })
+  }
+
   useEffect(() => {
     handleGenerateMovie();
     featuredGenerateMovie();
+    featuredGenerateTv();
   }, []);
 
   const mapGenreIdsToNames = (genreIds: GenreIds[]): string[] => {
     return genreIds.map((id) => genresById[id]);
   };
+
+  console.log(featuredTv)
 
   const genre_ids = randomMovie ? randomMovie.genre_ids : [];
   const genreNames = mapGenreIdsToNames(genre_ids);
@@ -119,6 +129,47 @@ export default function Home() {
                   key={featured.id}
                   title={featured.title}
                   vote_average={featured.vote_average}
+                  backdrop_path={featured.backdrop_path}
+                />
+              </SwiperSlide>
+            ))}
+        </Swiper>
+      </section>
+      <div className="text-center">
+        <h2 className="font-bold text-3xl">Featured TV Series</h2>
+      </div>
+      <section className="flex flex-row justify-center items-center mb-6 ">
+        <Swiper
+        slidesPerView={2}
+        spaceBetween={10}
+        freeMode={true}
+        pagination={{
+          clickable: true,
+        }}
+        breakpoints={{
+          320: {
+            slidesPerView: 1,
+            spaceBetween: 20
+          },
+          1024: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+          },
+          1080: {
+            slidesPerView: 3,
+            spaceBetween: 10,
+          }
+        }}
+        modules={[FreeMode, Pagination]}
+        className="mySwiper"
+        >
+          {featuredTv &&
+            featuredTv.map((featured) => (
+              <SwiperSlide key={featured.id}>
+                <Featured
+                  key={featured.id}
+                  title={featured.name}
+                  vote_average={featured.vote_average.toFixed(1)}
                   backdrop_path={featured.backdrop_path}
                 />
               </SwiperSlide>
