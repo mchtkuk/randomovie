@@ -45,8 +45,6 @@ export default function Home() {
     return genreIds.map((id) => genresById[id]);
   };
 
-  console.log(featuredTv)
-
   const genre_ids = randomMovie ? randomMovie.genre_ids : [];
   const genreNames = mapGenreIdsToNames(genre_ids);
 
