@@ -1,10 +1,6 @@
 // next.config.js
 
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  images: {
-    domains: ['image.tmdb.org'],
-  },
-};
+const nextConfig = {};
 
 module.exports = nextConfig;
