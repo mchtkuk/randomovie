@@ -50,31 +50,12 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col gap-5 backdrop-grayscale-[50%] backdrop-blur-sm">
-      <header className="flex relative p-8 justify-between w-full border-b-[2px] border-gray-500">
-        <button>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-8 h-8 hover:text-[#6ADBE9]"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M4 6h16M4 12h16M4 18h7"
-            />
-          </svg>
-        </button>
+      <header className="flex relative p-8 justify-center w-full border-b-[2px] border-gray-500">
         <button
           onClick={handleGenerateMovie}
           className="font-bold text-4xl hover:text-[#6ADBE9] text-center"
         >
           RandoMovie
-        </button>
-        <button className="text-white font-bold hover:text-[#6ADBE9]">
-          Sign in
         </button>
       </header>
       <section className="w-full relative flex justify-center items-center">
